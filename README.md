@@ -1,6 +1,6 @@
 # End to End Data Science Project
 
-### Workflows--> Ml Pipeline
+### Workflows-->Ml Pipeline
 
 1. Data Ingestion
 2. Data Transformation
