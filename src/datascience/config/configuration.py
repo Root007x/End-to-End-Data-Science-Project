@@ -1,6 +1,11 @@
 from src.datascience.constants import *
 from src.datascience.utils.common import read_yaml, create_directories
-from src.datascience.entity.config_entity import (DataIngestionconfig, DataValidationConfig, DataTransformationConfig)
+from src.datascience.entity.config_entity import (DataIngestionconfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig)
+import os
+
+# os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/Root007x/data_science_project.mlflow"
+# os.environ["MLFLOW_TRACKING_USERNAME"] = "Root007x"
+# os.environ["MLFLOW_TRACKING_PASSWORD"] = "f609507313312db73d17bae15646bf188d6f93e5"
 
 class ConfigurationManager:
     def __init__(self,
@@ -51,3 +56,42 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.ElasticNet
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+            
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path=config.train_data_path,
+            test_data_path=config.test_data_path,
+            model_name=config.model_name,
+            alpha=params.alpha,
+            l1_ratio=params.l1_ratio,
+            target_column=schema.name
+            )
+        return model_trainer_config
+    
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        params = self.params.ElasticNet
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path=config.model_path,
+            all_params=params,
+            metric_file_name=config.metric_file_name,
+            target_column=schema.name,
+            mlflow_uri= os.environ.get("MLFLOW_TRACKING_URI")
+
+        )
+        return model_evaluation_config 
