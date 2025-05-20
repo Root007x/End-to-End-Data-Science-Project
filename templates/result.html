@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #722f37, #8d3b47, #3c1518, #69140e);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .wine-icon {
+            font-size: 60px;
+            color: #8d3b47;
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #2c0b0e;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(141, 59, 71, 0.1);
+            border-radius: 12px;
+            border: 2px solid rgba(141, 59, 71, 0.2);
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8d3b47, #69140e);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(141, 59, 71, 0.4);
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <i class="fas fa-wine-glass-alt wine-icon"></i>
+        <h1 class="title">Wine Quality Analysis Result</h1>
+        <p class="description">Based on our AI model's analysis of the chemical properties provided, here's the predicted quality of your wine:</p>
+        <div class="result">
+            <strong>Predicted Quality Score:</strong><br>
+            {{prediction}}
+        </div>
+        <a href="/" class="back-button">Analyze Another Wine</a>
+    </div>
+</body>
+</html>

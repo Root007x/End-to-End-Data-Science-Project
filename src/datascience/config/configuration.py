@@ -3,9 +3,9 @@ from src.datascience.utils.common import read_yaml, create_directories
 from src.datascience.entity.config_entity import (DataIngestionconfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig)
 import os
 
-# os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/Root007x/data_science_project.mlflow"
-# os.environ["MLFLOW_TRACKING_USERNAME"] = "Root007x"
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = "f609507313312db73d17bae15646bf188d6f93e5"
+os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/Root007x/data_science_project.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"] = "Root007x"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "f609507313312db73d17bae15646bf188d6f93e5"
 
 class ConfigurationManager:
     def __init__(self,
